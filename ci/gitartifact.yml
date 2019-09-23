@@ -35,6 +35,8 @@ jobs:
         type: docker-image
         source:
           repository: ubuntu
+      outputs:
+      - name: build
       run:
         path: sh
         args:
@@ -62,3 +64,4 @@ jobs:
 #   - put: pcf-resource
 #     params:
 #       manifest: source-code-from-github/ci/manifest.yml
+
