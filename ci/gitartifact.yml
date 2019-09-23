@@ -36,21 +36,18 @@ jobs:
         source:
           repository: ubuntu
       outputs:
-      - name: build
+      - name: changed-repo
       run:
         path: sh
         args:
           - -exc
           - |
             cp -r repo changed-repo
-            echo "This is my file content." > ./build/myapp-$(date +"%Y%m%d%H%S").txt
+            echo "This is my file content." > /myapp-$(date +"%Y%m%d%H%S").txt
             git add .
-            git commit -m "message"
-
-            
+            git commit -m "message"   
       inputs:
       - name: repo
-
   - put: repo
     params: { repository: changed-repo }
 # - name: deploy-app-to-pcf
