@@ -41,10 +41,11 @@ jobs:
           - -exc
           - |
             cp -r repo changed-repo
-            cat a.txt > changed-repo/b.txt
+            echo "This is my file content." > ./build/myapp-$(date +"%Y%m%d%H%S").txt
             git add .
             git commit -m "message"
 
+            
       inputs:
       - name: repo
 
@@ -61,4 +62,3 @@ jobs:
 #   - put: pcf-resource
 #     params:
 #       manifest: source-code-from-github/ci/manifest.yml
-
