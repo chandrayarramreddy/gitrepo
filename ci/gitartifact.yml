@@ -2,7 +2,7 @@ resources:
 - name: repo
   type: git
   source:
-    uri: https://github.com/chandrayarramreddy/gitrepo.git
+    uri: https://github.com/chandrayarramreddy/gitrepo
     #uri: https://chandrayarramreddy:Chandr%4012@github.com/chandrayarramreddy/deploy-springboot-app-using-concourse-ci.git
     branch: master
     # Username: chandrayarramreddy
@@ -27,7 +27,7 @@ jobs:
 - name: myjob
   plan:
   - get: repo
-
+    trigger: true
   - task: simpletask
     config:
       platform: linux
@@ -41,7 +41,7 @@ jobs:
           - -exc
           - |
             cp -r repo changed-repo
-            cat a_file > changed-repo/another_file
+            cat a.txt > changed-repo/b.txt
             git add .
             git commit -m "message"
 
